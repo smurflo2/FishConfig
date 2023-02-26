@@ -10,7 +10,7 @@ function nn # nvim nvim config
     cd ~/.config/nvim/ && nvim
 end
 
-# WeLibrary / Learning Economy
+# 📚  WeLibrary / Learning Economy 🕸🕸🕸
 function swb
     . ~/scripts/startBackend.fish
 end
@@ -87,7 +87,7 @@ function nlcbase
     cd ~/WeLibraryOS/learncardapp/packages/learn-card-base/ && nvim
 end
 
-# FromThePath
+# 🚶 FromThePath
 function sfb
     cd ~/FromThePath2.0/backend/ && . start
 end
@@ -106,6 +106,31 @@ end
 
 function nfb
     cd ~/FromThePath2.0/backend && nvim
+end
+
+# 🗳️ High Resolution Democracy
+function hrd
+    cd ~/HighResolutionDemocracy
+end
+
+function nhrd
+    cd ~/HighResolutionDemocracy && nvim
+end
+
+function nhrdf
+    cd ~/HighResolutionDemocracy/react && nvim
+end
+
+function nhrdb
+    cd ~/HighResolutionDemocracy/solidity/ && nvim
+end
+
+function nhrds # HRD Solidity === HRD backend
+    nhrdb
+end
+
+function shrd
+    cd ~/HighResolutionDemocracy/react && pnpm start
 end
 
 ######### Other useful things
