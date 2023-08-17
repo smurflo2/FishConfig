@@ -83,8 +83,104 @@ function nlcapp
     cd ~/WeLibraryOS/learncardapp/ && nvim
 end
     
-function nlcbase
-    cd ~/WeLibraryOS/learncardapp/packages/learn-card-base/ && nvim
+function ndw
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/daily-wizard/ && nvim
+end
+
+function nbt
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/bedtime-tales/ && nvim
+end
+
+function nml
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && nvim
+end
+
+function nmlb
+    cd ~/WeLibraryOS/learncardapp/packages/madlib-base/ && nvim
+end
+
+function nmla
+    cd ~/WeLibraryOS/learncardapp/services/madlib-author/ && nvim
+end
+
+function nmlcms
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && nvim
+end
+
+function nmlflows
+    cd ~/WeLibraryOS/learncardapp/packages/directus-extensions/flows/ && nvim
+end
+
+function nflows
+    cd ~/WeLibraryOS/learncardapp/packages/directus-extensions/flows/ && nvim
+end
+
+function bflows
+    cd ~/WeLibraryOS/learncardapp/packages/directus-extensions/flows/ && sudo pnpm build && cd ~/WeLibraryOS/learncardapp/packages/directus-extensions/raw-body-parser/ && sudo pnpm build
+end
+
+function cmsflowsnapshot
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dump -c -U directus --inserts --table directus_flows --table directus_operations > flow_snapshot.sql
+end
+
+function cmsmodelsnapshot
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dump -c -U directus --inserts -t directus_collections -t directus_fields -t directus_relations > data_model_snapshot.sql    
+end
+
+function cmspermissionsnapshot
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dump -c -U directus --inserts -t directus_permissions -t directus_roles > permission_snapshot.sql
+end
+
+function cmsdirectussnapshot
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dump -c -U directus --inserts -t directus_permissions -t directus_roles -t directus_collections -t directus_fields -t directus_relations -t directus_flows -t directus_operations -t directus_folders -t directus_settings > full_directus_migration_snapshot.sql
+end
+
+function cmssnapshot
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dumpall -c -U directus > ./snapshot_with_data.sql
+end
+
+function cmssnapshot-no-data
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker exec -t database pg_dump -c -U directus --exclude-table directus_activity > ./snapshot.sql
+end
+
+function sdw
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-dw
+end
+
+function sbt
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-bt
+end
+
+function scu
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-cu
+end
+
+# function smlsb
+#     cd ~/WeLibraryOS/MadLibAI/packages/madlib-base/ && pnpm storybook
+# end
+
+function sml
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-pl
+end
+
+function spl
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-pl
+end
+
+function smldev
+    cd ~/WeLibraryOS/learncardapp/apps/madlibs/madlibs/ && pnpm start-dev
+end
+
+function smla
+    cd ~/WeLibraryOS/learncardapp/services/madlib-author/ && pnpm start
+end
+
+function smlcms
+    cd ~/WeLibraryOS/learncardapp/services/madlib-cms/ && sudo docker compose up
+end
+
+function sdocker
+    systemctl start docker.service
 end
 
 # 🚶 FromThePath
