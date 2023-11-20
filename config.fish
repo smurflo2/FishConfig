@@ -16,15 +16,24 @@ function swb
 end
 
 function swf
-    . ~/scripts/startFrontend.fish
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx start welibrary
+end
+
+function bgl
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx build-local welibrary-graphql
+
+end
+
+function swfncg
+    cd ~/WeLibraryOS/wl-react/apps/welibrary && pnpm start-no-codegen
 end
 
 function sssl
-    cd ~/WeLibraryOS/wl-react/ && pnpm start-ssl
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm start-ssl
 end
 
 function ssslprod
-    cd ~/WeLibraryOS/wl-react/ && pnpm start-ssl-prod
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm start-ssl-prod
 end
 
 function slc
@@ -56,15 +65,15 @@ function slcapp
 end
 
 function swapp 
-    cd ~/WeLibraryOS/wl-react && ANDROID_HOME=/home/smurflo/Android/Sdk pnpm start-android
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && ANDROID_HOME=/home/smurflo/Android/Sdk pnpm start-android
 end
 
 function nwb
-    . ~/scripts/nvimBackend.fish
+    cd ~/WeLibraryOS/WeLibrary/ && nvim
 end
 
 function nwf
-    . ~/scripts/nvimFrontend.fish
+    cd ~/WeLibraryOS/wl-react/apps/welibrary && nvim
 end
 
 function nlc
@@ -181,6 +190,14 @@ end
 
 function sdocker
     systemctl start docker.service
+end
+
+function smlstripe
+    stripe listen --forward-to http://0.0.0.0:8055/new-flows/payments
+end
+
+function swstripe
+    stripe listen --forward-to localhost:4000/payments
 end
 
 # 🚶 FromThePath
