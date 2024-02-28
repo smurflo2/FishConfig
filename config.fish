@@ -2,6 +2,8 @@ starship init fish | source
 
 ## idk why I can't put these in individual files in .config/fish/functions
 
+alias pnx="pnpm exec nx"
+
 function fishconf
     nvim ~/.config/fish/config.fish
 end
@@ -15,17 +17,24 @@ function swb
     . ~/scripts/startBackend.fish
 end
 
+function swbl
+    cd ~/WeLibraryOS/WeLibrary/ && docker compose up
+end
+
 function swf
     cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx start welibrary
 end
 
-function bgl
-    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx build-local welibrary-graphql
-
+function swfl
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnx start-localhost welibrary
 end
 
-function swfncg
-    cd ~/WeLibraryOS/wl-react/apps/welibrary && pnpm start-no-codegen
+function swfl
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx start-localhost welibrary
+end
+
+function bgl
+    cd ~/WeLibraryOS/wl-react/apps/welibrary/ && pnpm exec nx build-local welibrary-graphql
 end
 
 function sssl
@@ -60,9 +69,9 @@ function se
     cd ~/Android/Sdk/emulator/ && adb devices && ./emulator -avd ThisOne
 end
 
-function slcapp 
-    cd ~/WeLibraryOS/learncardapp/apps/learn-card-app && ANDROID_HOME=/home/smurflo/Android/Sdk pnpm start-android
-end
+# function slcapp 
+#     cd ~/WeLibraryOS/learncardapp/apps/learn-card-app && ANDROID_HOME=/home/smurflo/Android/Sdk pnpm start-android
+# end
 
 function swapp 
     cd ~/WeLibraryOS/wl-react/apps/welibrary/ && ANDROID_HOME=/home/smurflo/Android/Sdk pnpm start-android
@@ -76,8 +85,36 @@ function nwf
     cd ~/WeLibraryOS/wl-react/apps/welibrary && nvim
 end
 
+function nwg
+    cd ~/WeLibraryOS/wl-react/packages/welibrary-graphql/ && nvim
+end
+
+function buildgql
+    cd ~/WeLibraryOS/wl-react/packages/welibrary-graphql/ && pnpm build
+end
+
+function bwgql
+    cd ~/WeLibraryOS/wl-react/packages/welibrary-graphql/ && pnpm build-localhost
+end
+
 function nlc
     . ~/scripts/nvimLearnCard.fish
+end
+
+function nad
+    cd ~/WeLibraryOS/admin-dashboard/ && nvim
+end
+
+function nlb
+    cd ~/WeLibraryOS/admin-dashboard/services/learn-bridge/ && nvim
+end
+
+function sad
+    cd ~/WeLibraryOS/admin-dashboard/ && docker compose up
+end
+
+function slb
+    cd ~/WeLibraryOS/admin-dashboard/services/learn-bridge/ && pnpm dev
 end
 
 function nrlc
@@ -88,8 +125,12 @@ function srlc
     cd ~/WeLibraryOS/LearnCard/packages/react-learn-card/ && pnpm storybook
 end
 
-function nlcapp
-    cd ~/WeLibraryOS/learncardapp/ && nvim
+function nlcar # learn-card-app, whole repo
+    cd ~/WeLibraryOS/learncardapp && nvim
+end
+
+function nlca
+    cd ~/WeLibraryOS/learncardapp/apps/learn-card-app/ && nvim
 end
     
 function ndw
@@ -200,6 +241,14 @@ function swstripe
     stripe listen --forward-to localhost:4000/payments
 end
 
+function smv
+    cd ~/WeLibraryOS/learncardapp/ && pnpm exec nx start metaversity
+end
+
+function slca
+    cd ~/WeLibraryOS/learncardapp/ && pnpm exec nx start learn-card-app
+end
+
 # 🚶 FromThePath
 function sfb
     cd ~/FromThePath2.0/backend/ && . start
@@ -266,7 +315,7 @@ end
 set -gx PNPM_HOME "/home/smurflo/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
 
-alias pnx="pnpm exec npx"
+alias pnx="pnpm exec nx"
 # pnpm end
 
 
